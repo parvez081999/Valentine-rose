@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Rose Day</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #fff0f5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Georgia', serif;
+    }
+
+    h1 {
+      color: #c2185b;
+      margin-top: 20px;
+      font-size: 32px;
+    }
+
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas" width="400" height="350"></canvas>
+  <h1>Happy Rose Day my beautiful ❤️</h1>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    function drawRose(x, y) {
+      // Stem
+      ctx.strokeStyle = "green";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, y + 90);
+      ctx.stroke();
+
+      // Petals
+      ctx.fillStyle = "red";
+      for (let i = 0; i < 6; i++) {
+        ctx.beginPath();
+        ctx.arc(
+          x + Math.cos(i) * 12,
+          y + Math.sin(i) * 12,
+          20,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+
+      // Center
+      ctx.beginPath();
+      ctx.arc(x, y, 10, 0, Math.PI * 2);
+      ctx.fillStyle = "#b71c1c";
+      ctx.fill();
+    }
+
+    // Bouquet
+    drawRose(200, 100);
+    drawRose(160, 120);
+    drawRose(240, 120);
+    drawRose(180, 70);
+    drawRose(220, 70);
+  </script>
+
+</body>
+</html>
